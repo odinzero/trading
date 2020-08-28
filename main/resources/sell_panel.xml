@@ -1,0 +1,363 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                           http://www.springframework.org/schema/util  http://www.springframework.org/schema/util/spring-util-3.1.xsd">  
+     
+    <!-- JLabel sell_label = new JLabel("SELL"); -->
+    <bean id="sell_label" class="javax.swing.JLabel" >
+        <constructor-arg index="0" value="SELL"/>
+        <property name="horizontalAlignment">
+            <ref bean="label_center_h" />
+        </property>
+        <property name="foreground">
+            <ref bean="colorSell" />
+        </property>
+    </bean> 
+    
+    <!-- ================================= QUANTITY ================================== -->
+    
+    <!-- JLabel quantity_label_sell = new JLabel("Quantity"); -->
+    <bean id="quantity_label_sell" class="javax.swing.JLabel" >
+        <constructor-arg index="0" value="Quantity"/>
+        <property name="horizontalAlignment">
+            <ref bean="label_center_l" />
+        </property>
+        <property name="verticalAlignment">
+            <ref bean="label_center_v" />
+        </property>
+        <property name="foreground">
+            <ref bean="colorSell" />
+        </property>
+    </bean>
+    
+    <!-- NumericTextField I_give_fieldSell = new NumericTextField(); -->
+    <bean id="I_give_fieldSell" class="com.trade.ui.elements.WatermarkTextField" >
+       <!-- <constructor-arg index="0" type="java.lang.String"  value="null"/>
+        <constructor-arg index="1" type="int"  value="10"/>
+        <constructor-arg index="2" type="java.text.DecimalFormat" ref="format" /> -->
+        
+        <constructor-arg index="0" ref="waterMark_btc" />
+        <constructor-arg index="1" type="java.lang.String"  value="RIGHT_CENTER"/>
+        <property name="paintWatermark">
+            <value>true</value> 
+        </property>
+        
+        <property name="background">
+            <ref bean="colorField" /> 
+        </property>
+        <!--  resultTextField.setMinimumSize(dimensionField); -->
+        <property name="minimumSize">
+            <ref bean="dimensionField" />
+        </property>
+        <!--  resultTextField.setPreferredSize(dimensionField); -->
+        <property name="preferredSize">
+            <ref bean="dimensionField" />
+        </property>
+        <!--  resultTextField.setMaximumSize(dimensionField); -->
+        <property name="maximumSize">
+            <ref bean="dimensionField" />
+        </property>
+    </bean>
+    
+    
+    <!-- GridLayout grid_layout_fee_sell = new GridLayout(2, 0, 0, 0) -->
+    <bean id="grid_layout_sell_1" class= "java.awt.GridLayout">
+        <constructor-arg index="0" value="2"></constructor-arg>
+        <constructor-arg index="1" value="0"></constructor-arg>
+        <constructor-arg index="2" value="5"></constructor-arg>
+        <constructor-arg index="3" value="5"></constructor-arg>
+    </bean>
+    
+    <!-- MainPanel quantity_sell_panel = new MainPanel();  -->
+    <bean id="quantity_sell_panel" class= "com.trade.ui.MainPanel" init-method="init">
+        <!-- buttonPanel.setBorder(outBorder); -->
+        <!-- <property name="border">
+             <ref bean="outBorder"/>
+        </property> -->
+        <!-- buttonPanel.setLayout(new GridLayout(0, 5, 5, 5)); -->
+        <property name="layout">
+            <ref bean="grid_layout_sell_1"/>
+        </property> 
+        <property name="panelComponents">
+            <list>
+                <!-- first row -->
+                <ref bean="quantity_label_sell"/>
+                <!-- second row -->
+                <ref bean="I_give_fieldSell"/>
+            </list>
+        </property>
+    </bean> 
+    
+    <!-- ================================= PRICE ================================== -->
+    
+    <!-- JLabel price_label_sell = new JLabel("Quantity"); -->
+    <bean id="price_label_sell" class="javax.swing.JLabel" >
+        <constructor-arg index="0" value="Price"/>
+        <property name="horizontalAlignment">
+            <ref bean="label_center_l" />
+        </property>
+        <property name="verticalAlignment">
+            <ref bean="label_center_v" />
+        </property>
+        <property name="foreground">
+            <ref bean="colorSell" />
+        </property>
+    </bean>
+    
+    <!-- NumericTextField price_fieldSell = new NumericTextField(); -->
+    <bean id="price_fieldSell" class="com.trade.ui.elements.WatermarkTextField" >
+      <!--  <constructor-arg index="0" type="java.lang.String"  value="null"/>
+        <constructor-arg index="1" type="int"  value="10"/>
+        <constructor-arg index="2" type="java.text.DecimalFormat" ref="format" /> -->
+       
+        <constructor-arg index="0" ref="waterMark_usd" />
+        <constructor-arg index="1" type="java.lang.String"  value="RIGHT_CENTER"/>
+        <property name="paintWatermark">
+            <value>true</value> 
+        </property>
+         
+        <property name="background">
+            <ref bean="colorField" /> 
+        </property>
+        <!--  resultTextField.setMinimumSize(dimensionField); -->
+        <property name="minimumSize">
+            <ref bean="dimensionField" />
+        </property>
+        <!--  resultTextField.setPreferredSize(dimensionField); -->
+        <property name="preferredSize">
+            <ref bean="dimensionField" />
+        </property>
+        <!--  resultTextField.setMaximumSize(dimensionField); -->
+        <property name="maximumSize">
+            <ref bean="dimensionField" />
+        </property>
+    </bean>
+    
+    <!-- MainPanel price_sell_panel = new MainPanel();  -->
+    <bean id="price_sell_panel" class= "com.trade.ui.MainPanel" init-method="init">
+        <!-- buttonPanel.setBorder(outBorder); -->
+        <!-- <property name="border">
+             <ref bean="outBorder"/>
+        </property> -->
+        <!-- buttonPanel.setLayout(new GridLayout(0, 5, 5, 5)); -->
+        <property name="layout">
+            <ref bean="grid_layout_sell_1"/>
+        </property> 
+        <property name="panelComponents">
+            <list>
+                <!-- first row -->
+                <ref bean="price_label_sell"/>
+                <!-- second row -->
+                <ref bean="price_fieldSell"/>
+            </list>
+        </property>
+    </bean>
+    
+    <!-- ================================= Total ================================== -->
+    
+    <!-- JLabel total_label_sell = new JLabel("Quantity"); -->
+    <bean id="total_label_sell" class="javax.swing.JLabel" >
+        <constructor-arg index="0" value="Total"/>
+        <property name="horizontalAlignment">
+            <ref bean="label_center_l" />
+        </property>
+        <property name="verticalAlignment">
+            <ref bean="label_center_v" />
+        </property>
+        <property name="foreground">
+            <ref bean="colorSell" />
+        </property>
+    </bean>
+    
+    <!-- NumericTextField I_get_fieldSell = new NumericTextField(); -->
+    <bean id="I_get_fieldSell" class="com.trade.ui.elements.WatermarkTextField" >
+      <!--  <constructor-arg index="0" type="java.lang.String"  value="null"/>
+        <constructor-arg index="1" type="int"  value="10"/>
+        <constructor-arg index="2" type="java.text.DecimalFormat" ref="format" /> -->
+       
+        <constructor-arg index="0" ref="waterMark_usd" />
+        <constructor-arg index="1" type="java.lang.String"  value="RIGHT_CENTER"/>
+        <property name="paintWatermark">
+            <value>true</value> 
+        </property>
+          
+        <property name="background">
+            <ref bean="colorField" /> 
+        </property>
+        <!--  resultTextField.setMinimumSize(dimensionField); -->
+        <property name="minimumSize">
+            <ref bean="dimensionField" />
+        </property>
+        <!--  resultTextField.setPreferredSize(dimensionField); -->
+        <property name="preferredSize">
+            <ref bean="dimensionField" />
+        </property>
+        <!--  resultTextField.setMaximumSize(dimensionField); -->
+        <property name="maximumSize">
+            <ref bean="dimensionField" />
+        </property>
+    </bean>
+    
+    <!-- MainPanel total_sell_panel = new MainPanel();  -->
+    <bean id="total_sell_panel" class= "com.trade.ui.MainPanel" init-method="init">
+        <!-- buttonPanel.setBorder(outBorder); -->
+        <!-- <property name="border">
+             <ref bean="outBorder"/>
+        </property> -->
+        <!-- buttonPanel.setLayout(new GridLayout(0, 5, 5, 5)); -->
+        <property name="layout">
+            <ref bean="grid_layout_sell_1"/>
+        </property> 
+        <property name="panelComponents">
+            <list>
+                <!-- first row -->
+                <ref bean="total_label_sell"/>
+                <!-- second row -->
+                <ref bean="I_get_fieldSell"/>
+            </list>
+        </property>
+    </bean>
+    
+    
+    
+    <!-- GridLayout grid_layout_fee_sell = new GridLayout(0, 2, 5, 5) -->
+    <bean id="grid_layout_fee_sell" class= "java.awt.GridLayout">
+        <constructor-arg index="0" value="0"></constructor-arg>
+        <constructor-arg index="1" value="2"></constructor-arg>
+        <constructor-arg index="2" value="5"></constructor-arg>
+        <constructor-arg index="3" value="5"></constructor-arg>
+    </bean>
+    
+    <!-- MainPanel fee_sell_panel = new MainPanel();  -->
+    <bean id="fee_sell_panel" class= "com.trade.ui.MainPanel" init-method="init">
+        <!-- buttonPanel.setBorder(outBorder); -->
+        <!-- <property name="border">
+             <ref bean="outBorder"/>
+        </property> -->
+        <!-- buttonPanel.setLayout(new GridLayout(0, 5, 5, 5)); -->
+        <property name="layout">
+            <ref bean="grid_layout_fee_sell"/>
+        </property> 
+        <property name="panelComponents">
+            <list>
+                <!-- first row -->
+                <ref bean="fee_percent_label_sell"/>
+                <!-- second row -->
+                <ref bean="fee_value_label_sell"/>
+            </list>
+        </property>
+    </bean> 
+    
+    <!-- JLabel fee_percent_label_sell = new JLabel("Fee: 0.195%"); -->
+    <bean id="fee_percent_label_sell" class="javax.swing.JLabel" >
+        <constructor-arg index="0" value="Fee: 0.195%"/>
+        <property name="foreground">
+            <ref bean="colorSell" />
+        </property>
+    </bean>     
+    
+    <!-- JLabel fee_value_label_sell = new JLabel("0.22"); -->
+    <bean id="fee_value_label_sell" class="javax.swing.JLabel" >
+        <constructor-arg index="0" value="$"/>
+        <property name="foreground">
+            <ref bean="colorSell" />
+        </property>
+    </bean> 
+    
+    <bean id="dimensionField" class="java.awt.Dimension">
+        <constructor-arg index="0" value="200"/>
+        <constructor-arg index="1" value="30"/>
+    </bean>
+    
+    <!-- Color.white -->
+    <util:constant id="colorField" static-field="java.awt.Color.white" /> 
+   
+    <!-- Color colorSell = new Color(237,28,36); -->
+    <bean id="colorSell" class="java.awt.Color" >
+        <constructor-arg index="0" type="int" value="237"/>
+        <constructor-arg index="1" type="int" value="28"/>
+        <constructor-arg index="2" type="int" value="36"/>
+    </bean> 
+    
+    <util:constant id="label_center_l" static-field="javax.swing.SwingConstants.LEFT" /> 
+    
+    <util:constant id="label_center_h" static-field="javax.swing.SwingConstants.CENTER" /> 
+    
+    <util:constant id="label_center_v" static-field="javax.swing.SwingConstants.BOTTOM" /> 
+    
+    <!--  DecimalFormat format = new DecimalFormat("#,###.###"); -->
+    <bean id="format" class="com.trade.ui.elements.Formats" init-method="init" >
+    </bean>
+    
+    <!--  KeyListener keyListener3 = new KeyListener(); -->
+    <bean id="keyListener3"  class="com.trade.ui.elements.actions.ForBuySell_1" init-method="init">
+         <property name="type" >
+            <value>SELL</value>
+        </property>
+        <property name="choice" >
+            <value>1</value>
+        </property>
+        <property name="percentLabel" >
+            <ref bean="fee_percent_label_sell" />
+        </property>
+        <property name="feeLabel" >
+            <ref bean="fee_value_label_sell" />
+        </property>
+        
+        <property name="tf1" >
+            <ref bean="I_give_fieldSell" />
+        </property>
+        <property name="tf2" >
+            <ref bean="price_fieldSell" />
+        </property>
+        <property name="tf3" >
+            <ref bean="I_get_fieldSell" />
+        </property>
+        <property name="cleanBuyField" >
+            <ref bean="cleanBuyPane" />
+        </property>
+        <property name="cleanSellField" >
+            <ref bean="cleanSellPane" />
+        </property>
+        <property name="profitLossField" >
+            <ref bean="ProfitLossPane" />
+        </property>
+    </bean>
+    
+    <!--  KeyListener keyListener4 = new KeyListener(); -->
+    <bean id="keyListener4"  class="com.trade.ui.elements.actions.ForBuySell_1" init-method="init">
+        <property name="choice" >
+            <value>2</value>
+        </property>
+        <property name="type" >
+            <value>SELL</value>
+        </property>
+        <property name="percentLabel" >
+            <ref bean="fee_percent_label_sell" />
+        </property>
+        <property name="feeLabel" >
+            <ref bean="fee_value_label_sell" />
+        </property>
+        
+        <property name="tf1" >
+            <ref bean="I_give_fieldSell" />
+        </property>
+        <property name="tf2" >
+            <ref bean="price_fieldSell" />
+        </property>
+        <property name="tf3" >
+            <ref bean="I_get_fieldSell" />
+        </property>
+        <property name="cleanBuyField" >
+            <ref bean="cleanBuyPane" />
+        </property>
+        <property name="cleanSellField" >
+            <ref bean="cleanSellPane" />
+        </property>
+        <property name="profitLossField" >
+            <ref bean="ProfitLossPane" />
+        </property>
+    </bean>
+    
+</beans>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                           http://www.springframework.org/schema/util  http://www.springframework.org/schema/util/spring-util-3.1.xsd">
+
+    
+<!--
+      menu help = new menu("Help");
+        
+      JMenuItem about = new JMenuItem("About");
+      help.add(about);
+    -->
+    
+    <!-- int const_v3 = SwingConstants.VERTICAL -->
+    <util:constant id="const_v3" static-field="javax.swing.SwingConstants.VERTICAL" />
+    
+    <!-- JSeparator separ3 = new JSeparator(SwingConstants.VERTICAL)); -->
+    <bean id="separ3" class="javax.swing.JSeparator" scope="prototype">
+        <constructor-arg  ref="const_v3" />
+    </bean>
+    
+    <!-- JMenuItem about = new JMenuItem("About"); -->
+    <bean id="about" class="com.trade.ui.elements.menu_item" init-method="init">
+        <constructor-arg  type="java.lang.String" name="text" value="About"  />
+        <property name="menuItemElements" >
+            <list>
+                <!-- about.add(separ3); -->
+                <ref bean="separ3"/>
+            </list>
+        </property>
+    </bean>
+    
+    <!-- menu help = new menu("Help"); -->
+    <bean id="help" class="com.trade.ui.elements.menu" init-method="init">
+        <constructor-arg index="0" type="java.lang.String" value="Help"  />
+        <property name="menuElements" >
+            <list>
+                <!-- help.add(about); -->
+                <ref bean="about"/>
+            </list>
+        </property>
+    </bean>            
+ 
+</beans>    

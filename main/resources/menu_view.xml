@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                           http://www.springframework.org/schema/util  http://www.springframework.org/schema/util/spring-util-3.1.xsd">
+
+    <!--
+
+        JMenu view = new JMenu("View");
+
+        JMenuItem standard   = new JMenuItem("Standard             Alt+1");
+        JMenuItem scientific = new JMenuItem("Sientific             Alt+2");
+        JMenuItem programmer = new JMenuItem("Programmer      Alt+3");
+        JMenuItem statistics = new JMenuItem("Statistics      Alt+4");
+        JMenuItem history = new JMenuItem("History      Ctrl+H");
+        JMenuItem digit_grouping = new JMenuItem("Digit grouping");
+        JMenuItem basic = new JMenuItem("Basic    Ctrl+F4");
+        JMenuItem unit_converion = new JMenuItem("Unit conversion    Ctrl+U");
+        JMenuItem date_calculation = new JMenuItem("Date calculation      Ctrl+E");
+
+        JMenu worksheets = new JMenu("Worksheets  ->");
+        JMenuItem mortgage = new JMenuItem("Mortgage");
+        JMenuItem vehicle_lease = new JMenuItem("Vehicle lease");
+        JMenuItem fuel_economy_mpg = new JMenuItem("Fuel economy (mpg)");
+        JMenuItem fule_economy_l = new JMenuItem("Fule economy (L/100km)");
+        worksheets.add(mortgage);
+        worksheets.add(vehicle_lease);
+        worksheets.add(fuel_economy_mpg);
+        worksheets.add(fule_economy_l);
+
+        standard.add(new JSeparator(SwingConstants.VERTICAL));
+        scientific.add(new JSeparator(SwingConstants.VERTICAL));
+        programmer.add(new JSeparator(SwingConstants.VERTICAL));
+        statistics.add(new JSeparator(SwingConstants.VERTICAL));
+
+        history.add(new JSeparator(SwingConstants.VERTICAL));
+        digit_grouping.add(new JSeparator(SwingConstants.VERTICAL));
+
+        basic.add(new JSeparator(SwingConstants.VERTICAL));
+        unit_converion.add(new JSeparator(SwingConstants.VERTICAL));
+        date_calculation.add(new JSeparator(SwingConstants.VERTICAL));
+        worksheets.add(new JSeparator(SwingConstants.VERTICAL));
+
+        view.add(standard);
+        view.add(scientific);
+        view.add(programmer);
+        view.add(statistics);
+        view.add(new JSeparator());
+        view.add(history);
+        view.add(digit_grouping);
+        view.add(new JSeparator());
+        view.add(basic);
+        view.add(unit_converion);
+        view.add(date_calculation);
+        view.add(worksheets);
+        
+    --> 
+    
+    <!-- int const_v1 = SwingConstants.VERTICAL -->
+    <util:constant id="const_v1" static-field="javax.swing.SwingConstants.VERTICAL" />
+    
+    <!-- JSeparator separ1 = new JSeparator(SwingConstants.VERTICAL)); -->
+    <bean id="separ1" class="javax.swing.JSeparator" scope="prototype">
+        <constructor-arg  ref="const_v1" />
+    </bean>
+    
+    <!-- menu_item standard   = new menu_item("Standard             Alt+1"); -->
+    <bean id="standard" class="com.trade.ui.elements.menu_item" init-method="init">
+        <constructor-arg  type="java.lang.String" name="text" value="Standard             Alt+1"  />
+        <property name="menuItemElements" >
+            <list>
+                <!-- standard.add(separ1); -->
+                <ref bean="separ1"/>
+            </list>
+        </property>
+    </bean>
+    
+    <!-- menu_item scientific = new menu_item("Sientific             Alt+2"); -->
+    <bean id="scientific" class="com.trade.ui.elements.menu_item" init-method="init">
+        <constructor-arg  type="java.lang.String" name="text" value="Sientific             Alt+2"  />
+        <property name="menuItemElements" >
+            <list>
+                <!-- scientific.add(separ1); -->
+                <ref bean="separ1"/>
+            </list>
+        </property>
+    </bean>
+    
+    <!-- menu_item programmer = new menu_item("Programmer      Alt+3");  -->
+    <bean id="programmer" class="com.trade.ui.elements.menu_item" init-method="init">
+        <constructor-arg  type="java.lang.String" name="text" value="Programmer      Alt+3"  />
+        <property name="menuItemElements" >
+            <list>
+                <!-- programmer.add(separ1); -->
+                <ref bean="separ1"/>
+            </list>
+        </property>
+    </bean>
+    
+    <!-- menu_item statistics = new menu_item("Statistics      Alt+4"); -->
+    <bean id="statistics" class="com.trade.ui.elements.menu_item" init-method="init">
+        <constructor-arg  type="java.lang.String" name="text" value="Statistics      Alt+4"  />
+        <property name="menuItemElements" >
+            <list>
+                <!-- statistics.add(separ1); -->
+                <ref bean="separ1"/>
+            </list>
+        </property>
+    </bean>
+    
+    <!-- menu_item history = new menu_item("History      Ctrl+H");  -->
+    <bean id="history" class="com.trade.ui.elements.menu_item" init-method="init">
+        <constructor-arg  type="java.lang.String" name="text" value="History      Ctrl+H"  />
+        <property name="menuItemElements" >
+            <list>
+                <!-- history.add(separ1); -->
+                <ref bean="separ1"/>
+            </list>
+        </property>
+    </bean>
+    
+    <!-- menu_item digit_grouping = new menu_item("Digit grouping"); -->
+    <bean id="digit_grouping" class="com.trade.ui.elements.menu_item" init-method="init">
+        <constructor-arg  type="java.lang.String" name="text" value="Digit grouping"  />
+        <property name="menuItemElements" >
+            <list>
+                <!-- digit_grouping.add(separ1); -->
+                <ref bean="separ1"/>
+            </list>
+        </property>
+    </bean>
+    
+    <!-- menu_item basic = new menu_item("Basic    Ctrl+F4"); -->
+    <bean id="basic" class="com.trade.ui.elements.menu_item" init-method="init">
+        <constructor-arg  type="java.lang.String" name="text" value="Basic    Ctrl+F4"  />
+        <property name="menuItemElements" >
+            <list>
+                <!-- basic.add(separ1); -->
+                <ref bean="separ1"/>
+            </list>
+        </property>
+    </bean>
+    
+    <!-- menu_item unit_converion = new menu_item("Unit conversion    Ctrl+U"); -->
+    <bean id="unit_converion" class="com.trade.ui.elements.menu_item" init-method="init">
+        <constructor-arg  type="java.lang.String" name="text" value="Unit conversion    Ctrl+U"  />
+        <property name="menuItemElements" >
+            <list>
+                <!-- unit_converion.add(separ1); -->
+                <ref bean="separ1"/>
+            </list>
+        </property>
+    </bean>
+    
+    <!-- menu_item date_calculation = new menu_item("Date calculation      Ctrl+E"); -->
+    <bean id="date_calculation" class="com.trade.ui.elements.menu_item" init-method="init">
+        <constructor-arg  type="java.lang.String" name="text" value="Date calculation      Ctrl+E"  />
+        <property name="menuItemElements" >
+            <list>
+                <!-- date_calculation.add(separ1); -->
+                <ref bean="separ1"/>
+            </list>
+        </property>
+    </bean>
+    
+    <!-- menu_item mortgage = new menu_item("Mortgage"); -->
+    <bean id="mortgage" class="com.trade.ui.elements.menu_item" init-method="init">
+        <constructor-arg  type="java.lang.String" name="text" value="Mortgage"  />
+        <property name="menuItemElements" >
+            <list>
+                <!-- mortgage.add(separ1); -->
+                <ref bean="separ1"/>
+            </list>
+        </property>
+    </bean>
+    
+    <!-- menu_item vehicle_lease = new menu_item("Vehicle lease"); -->
+    <bean id="vehicle_lease" class="com.trade.ui.elements.menu_item" init-method="init">
+        <constructor-arg  type="java.lang.String" name="text" value="Vehicle lease"  />
+        <property name="menuItemElements" >
+            <list>
+                <!-- vehicle_lease.add(separ1); -->
+                <ref bean="separ1"/>
+            </list>
+        </property>
+    </bean>
+    
+    <!-- menu_item fuel_economy_mpg = new menu_item("Fuel economy (mpg)"); -->
+    <bean id="fuel_economy_mpg" class="com.trade.ui.elements.menu_item" init-method="init">
+        <constructor-arg  type="java.lang.String" name="text" value="Fuel economy (mpg)"  />
+        <property name="menuItemElements" >
+            <list>
+                <!-- fuel_economy_mpg.add(separ1); -->
+                <ref bean="separ1"/>
+            </list>
+        </property>
+    </bean>
+    
+    <!-- menu_item fule_economy_l = new menu_item("Fule economy (L/100km)"); -->
+    <bean id="fule_economy_l" class="com.trade.ui.elements.menu_item" init-method="init">
+        <constructor-arg  type="java.lang.String" name="text" value="Fule economy (L/100km)"  />
+        <property name="menuItemElements" >
+            <list>
+                <!-- fule_economy_l.add(separ1); -->
+                <ref bean="separ1"/>
+            </list>
+        </property>
+    </bean>
+    
+    <!-- menu worksheets = new menu("Worksheets  ->"); -->
+    <bean id="worksheets" class="com.trade.ui.elements.menu" init-method="init">
+        <constructor-arg index="0" type="java.lang.String" value="Worksheets  ->"  />
+        <property name="menuElements" >
+            <list>
+                <ref bean="mortgage"/>
+                <ref bean="vehicle_lease"/>
+                <ref bean="fuel_economy_mpg"/>
+                <ref bean="fule_economy_l"/>
+            </list>
+        </property>
+    </bean>
+    
+    <!-- JSeparator separator_horizontal = new JSeparator() -->
+    <bean id="separator_horizontal" class="javax.swing.JSeparator" scope="prototype" />      
+    
+    <!-- JMenu view = new JMenu("View"); -->
+    <bean id="view" class="com.trade.ui.elements.menu" init-method="init">
+      <!--  <constructor-arg index="0" type="java.lang.String" value="View"  /> -->
+        <property name="text" >
+            <value>View</value>
+        </property>
+        <property name="menuElements" >
+            <list>
+                <ref bean="standard"/>
+                <ref bean="scientific"/>
+                <ref bean="programmer"/>
+                <ref bean="statistics"/>
+                <ref bean="separator_horizontal"/>
+                <ref bean="history"/>
+                <ref bean="digit_grouping"/>
+                <ref bean="separator_horizontal"/>
+                <ref bean="basic"/>
+                <ref bean="unit_converion"/>
+                <ref bean="date_calculation"/>
+                <ref bean="worksheets"/> 
+            </list>
+        </property>
+    </bean>  
+   
+    
+</beans>

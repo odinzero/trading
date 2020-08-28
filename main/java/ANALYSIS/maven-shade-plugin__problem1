@@ -1,0 +1,21 @@
+Using maven-shade-plugin  :
+
+1. After try biuld executable jar the following problem :
+
+INFO: Loading XML bean definitions from URL [jar:file:/D:/%3d_NETBEANS_PROJECTS_
+%3d/trade_calc/target/trade_calc-1.0-SNAPSHOT-shaded.jar!/context.xml]
+
+Exception in thread "main" org.springframework.beans.factory.parsing.BeanDefinit
+ionParsingException: Configuration problem: Unable to locate Spring NamespaceHan
+dler for XML schema namespace [http://www.springframework.org/schema/util]
+
+============================= SOLUTION =========================================
+
+add to maven-shade-plugin the following content:
+
+ <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+    <resource>META-INF/spring.handlers</resource>
+ </transformer>
+ <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+    <resource>META-INF/spring.schemas</resource>
+ </transformer>

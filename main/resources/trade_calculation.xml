@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                           http://www.springframework.org/schema/util  http://www.springframework.org/schema/util/spring-util-3.1.xsd">
+
+    <!--
+        JPanel buttonPanel = new JPanel();                              
+        buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 0, 10));
+        buttonPanel.setLayout(new GridLayout(0, 5, 5, 5));
+        buttonPanel.add(mcButton);
+        buttonPanel.add(mrButton);
+        buttonPanel.add(msButton);
+        buttonPanel.add(mplusButton);
+        buttonPanel.add(mminusButton);
+    -->
+    
+    <import resource="coins.xml"></import>
+    <import resource="buy_panel.xml"></import>
+    <import resource="sell_panel.xml"></import>
+    <import resource="caretListener.xml"></import>
+    
+    <!-- Border outBorder = BorderFactory.createEmptyBorder(10, 10, 0, 10) -->
+    <bean id="outBorder" class="javax.swing.BorderFactory" factory-method="createEmptyBorder">
+        <constructor-arg index="0" value="10"></constructor-arg>
+        <constructor-arg index="1" value="10"></constructor-arg>
+        <constructor-arg index="2" value="0"></constructor-arg>
+        <constructor-arg index="3" value="10"></constructor-arg>
+    </bean>
+    
+    <!-- GridLayout grid_layout = new GridLayout(5, 0, 5, 5) -->
+    <bean id="grid_layout" class= "java.awt.GridLayout">
+        <constructor-arg index="0" value="5"></constructor-arg>
+        <constructor-arg index="1" value="0"></constructor-arg>
+        <constructor-arg index="2" value="5"></constructor-arg>
+        <constructor-arg index="3" value="5"></constructor-arg>
+    </bean>
+    
+    <!-- MainPanel buy_panel = new MainPanel();  -->
+    <bean id="buy_panel" class= "com.trade.ui.MainPanel" init-method="init">
+        <!-- buttonPanel.setBorder(outBorder); -->
+         <property name="border">
+             <ref bean="outBorder"/>
+        </property>
+        <!-- buttonPanel.setLayout(new GridLayout(0, 5, 5, 5)); -->
+         <property name="layout">
+             <ref bean="grid_layout"/>
+        </property> 
+        <property name="panelComponents">
+            <list>
+                <!-- first row -->
+                <ref bean="buy_label"/>
+                <!-- second row -->
+                <ref bean="quantity_buy_panel"/>
+                <!-- third row -->
+                <ref bean="price_buy_panel"/> 
+                <!-- four row -->
+                <ref bean="total_buy_panel"/>
+                <!-- five row -->
+                <ref bean="fee_buy_panel"/>
+
+            </list>
+        </property>
+    </bean> 
+    
+    <!-- MainPanel sell_panel = new MainPanel();  -->
+    <bean id="sell_panel" class= "com.trade.ui.MainPanel" init-method="init">
+        <!-- buttonPanel.setBorder(outBorder); -->
+         <property name="border">
+             <ref bean="outBorder"/>
+        </property>
+        <!-- buttonPanel.setLayout(new GridLayout(0, 5, 5, 5)); -->
+         <property name="layout">
+             <ref bean="grid_layout"/>
+        </property> 
+        <property name="panelComponents">
+            <list>
+                <!-- first row -->
+                <ref bean="sell_label"/>
+                <!-- second row -->
+                <ref bean="quantity_sell_panel"/>
+                <!-- third row -->
+                <ref bean="price_sell_panel"/> 
+                <!-- four row -->
+                <ref bean="total_sell_panel"/>
+                <!-- five row -->
+                <ref bean="fee_sell_panel"/>
+
+            </list>
+        </property>
+    </bean> 
+    
+    <!-- GridLayout grid_layout_bs = new GridLayout(0, 2, 5, 5) -->
+    <bean id="grid_layout_bs" class= "java.awt.GridLayout">
+        <constructor-arg index="0" value="0"></constructor-arg>
+        <constructor-arg index="1" value="2"></constructor-arg>
+        <constructor-arg index="2" value="5"></constructor-arg>
+        <constructor-arg index="3" value="5"></constructor-arg>
+    </bean>
+    
+    <!-- MainPanel buy_sell_panel = new MainPanel();  -->
+    <bean id="buy_sell_panel" class= "com.trade.ui.MainPanel" init-method="init">
+        <!-- buttonPanel.setBorder(outBorder); -->
+         <property name="border">
+             <ref bean="outBorder"/>
+        </property>
+        <!-- buttonPanel.setLayout(new GridLayout(0, 5, 5, 5)); -->
+         <property name="layout">
+             <ref bean="grid_layout_bs"/>
+        </property> 
+        <property name="panelComponents">
+            <list>
+                <!-- first row -->
+                <ref bean="buy_panel"/>
+                <!-- second row -->
+                <ref bean="sell_panel"/>
+            </list>
+        </property>
+    </bean> 
+    
+</beans>

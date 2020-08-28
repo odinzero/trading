@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                           http://www.springframework.org/schema/util  http://www.springframework.org/schema/util/spring-util-3.1.xsd">
+
+<!--
+        JMenu edit = new JMenu("Edit");
+        JMenuItem copy = new JMenuItem("Copy      Ctrl+C");
+        JMenuItem paste = new JMenuItem("Paste      Ctrl+V");
+        
+        JMenu history_submenu = new JMenu("History      ->");
+        JMenuItem copy_history = new JMenuItem("Copy     ");
+        JMenuItem edit_history = new JMenuItem("Edit      F2");
+        JMenuItem cancel_edit = new JMenuItem("Cancel edit      Esc");
+        JMenuItem clear = new JMenuItem("Clear      Ctrl+Shift+D");
+        history_submenu.add(copy_history);
+        history_submenu.add(edit_history);
+        history_submenu.add(cancel_edit);
+        history_submenu.add(clear);
+        
+        copy.add(new JSeparator(SwingConstants.VERTICAL));
+        paste.add(new JSeparator(SwingConstants.VERTICAL));
+        
+        edit.add(copy);
+        edit.add(paste);
+        edit.add(new JSeparator());
+        edit.add(history_submenu);
+    -->   
+    
+    <!-- JSeparator separator_horizontal = new JSeparator() -->
+    <bean id="separator_horizontal2" class="javax.swing.JSeparator" scope="prototype" />
+    
+    <!-- int const_v2 = SwingConstants.VERTICAL -->
+    <util:constant id="const_v2" static-field="javax.swing.SwingConstants.VERTICAL" />
+    
+    <!-- JSeparator separ2 = new JSeparator(SwingConstants.VERTICAL)); -->
+    <bean id="separ2" class="javax.swing.JSeparator" scope="prototype">
+        <constructor-arg  ref="const_v2" />
+    </bean>
+    
+    <!-- JMenuItem copy = new JMenuItem("Copy      Ctrl+C"); --> 
+    <bean id="copy" class="com.trade.ui.elements.menu_item" init-method="init">
+        <constructor-arg  type="java.lang.String" name="text" value="Copy      Ctrl+C"  />
+        <property name="menuItemElements" >
+            <list>
+                <!-- copy.add(separ2); -->
+                <ref bean="separ2"/>
+            </list>
+        </property>
+    </bean>
+    
+    <!-- JMenuItem paste = new JMenuItem("Paste      Ctrl+V"); -->
+    <bean id="paste" class="com.trade.ui.elements.menu_item" init-method="init">
+        <constructor-arg  type="java.lang.String" name="text" value="Paste      Ctrl+V"  />
+        <property name="menuItemElements" >
+            <list>
+                <!-- paste.add(separ2); -->
+                <ref bean="separ2"/>
+            </list>
+        </property>
+    </bean>
+    
+    <!-- JMenuItem copy_history = new JMenuItem("Copy     "); -->
+    <bean id="copy_history" class="com.trade.ui.elements.menu_item" init-method="init">
+        <constructor-arg  type="java.lang.String" name="text" value="Copy     "  />
+        <property name="menuItemElements" >
+            <list>
+                <!-- copy_history.add(separ2); -->
+                <ref bean="separ2"/>
+            </list>
+        </property>
+    </bean>
+    
+    <!-- JMenuItem edit_history = new JMenuItem("Edit      F2"); -->
+    <bean id="edit_history" class="com.trade.ui.elements.menu_item" init-method="init">
+        <constructor-arg  type="java.lang.String" name="text" value="Edit      F2"  />
+        <property name="menuItemElements" >
+            <list>
+                <!-- edit_history.add(separ2); -->
+                <ref bean="separ2"/>
+            </list>
+        </property>
+    </bean>
+    
+    <!-- JMenuItem cancel_edit = new JMenuItem("Cancel edit      Esc"); -->
+    <bean id="cancel_edit" class="com.trade.ui.elements.menu_item" init-method="init">
+        <constructor-arg  type="java.lang.String" name="text" value="Cancel edit      Esc"  />
+        <property name="menuItemElements" >
+            <list>
+                <!-- cancel_edit.add(separ2); -->
+                <ref bean="separ2"/>
+            </list>
+        </property>
+    </bean>
+    
+    <!-- JMenuItem clear = new JMenuItem("Clear      Ctrl+Shift+D"); -->
+    <bean id="clear" class="com.trade.ui.elements.menu_item" init-method="init">
+        <constructor-arg  type="java.lang.String" name="text" value="Clear      Ctrl+Shift+D"  />
+        <property name="menuItemElements" >
+            <list>
+                <!-- cancel_edit.add(separ2); -->
+                <ref bean="separ2"/>
+            </list>
+        </property>
+    </bean>
+    
+    <!-- menu history_submenu = new menu("History      ->"); -->
+    <bean id="history_submenu" class="com.trade.ui.elements.menu" init-method="init">
+        <constructor-arg index="0" type="java.lang.String" value="History      ->"  />
+        <property name="menuElements" >
+            <list>
+                <ref bean="copy_history"/>
+                <ref bean="edit_history"/>
+                <ref bean="cancel_edit"/>
+                <ref bean="clear"/>
+            </list>
+        </property>
+    </bean>
+ 
+    <!-- JMenu edit = new JMenu("Edit"); -->
+    <bean id="edit" class="com.trade.ui.elements.menu" init-method="init">
+        <constructor-arg index="0" type="java.lang.String" value="Edit"  />
+        <property name="menuElements" >
+            <list>
+                <ref bean="copy"/>
+                <ref bean="paste"/>
+                <ref bean="separator_horizontal2"/>
+                <ref bean="history_submenu"/>
+            </list>
+        </property>
+    </bean>  
+      
+</beans>    

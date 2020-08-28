@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                           http://www.springframework.org/schema/util  http://www.springframework.org/schema/util/spring-util-3.1.xsd">
+
+    <!--
+    
+        int  y_direction2 = BoxLayout.Y_AXIS;
+        BoxLayout boxLayout = new BoxLayout(textPanel, y_direction);
+        
+        Dimension dimensionTop = new Dimension(0, 10);
+        Box box = Box.createRigidArea(dimensionTop);
+
+        List panelComponents = new ArrayList();
+        panelComponents.add(Box);
+        panelComponents.add(cleanBuy);
+        
+        MainPanel textPanel = new MainPanel();
+        textPanel.setLayout(boxLayout);
+        textPanel.setPanelComponents(List panelComponents);
+        
+        Color colorTextField = Color.white;
+        
+        TextField cleanBuy = new TextField();
+        cleanBuy.setBackground(colorTextField);
+        cleanBuy.setMinimumSize(dimensionTextField);
+        cleanBuy.setPreferredSize(dimensionTextField);
+        cleanBuy.setMaximumSize(dimensionTextField);
+        
+        
+    -->
+    
+    <!-- BoxLayout.Y_AXIS -->
+    <util:constant id="y_direction2" static-field="javax.swing.BoxLayout.Y_AXIS" />
+    <util:constant id="x_direction2" static-field="javax.swing.BoxLayout.X_AXIS" />
+    
+    <!-- BoxLayout boxLayout = new BoxLayout(textPanel, y_direction) -->
+    <bean id="boxLayout2" class="javax.swing.BoxLayout">
+        <constructor-arg index="0" ref="textPanel"/>
+        <constructor-arg index="1" ref="y_direction2" />
+    </bean>
+    
+    <!-- BoxLayout boxLayout = new BoxLayout(cleanBuySellPanel, y_direction) -->
+    <bean id="boxLayout3" class="javax.swing.BoxLayout">
+        <constructor-arg index="0" ref="cleanBuySellPanel"/>
+        <constructor-arg index="1" ref="x_direction2" />
+    </bean>
+    
+    <!-- MainPanel cleanBuySellPanel = new MainPanel(); -->
+    <bean id="cleanBuySellPanel" class="com.trade.ui.MainPanel"  init-method="init">
+         <!--  cleanBuySellPanel.setLayout(boxLayout); -->
+        <property name="layout">
+             <ref bean="boxLayout3"/>
+        </property>
+        <property name="panelComponents">
+            <list>
+                <ref bean="cleanBuyPane"/>
+                <ref bean="boxHor"/>
+                <ref bean="cleanSellPane"/>
+            </list>
+        </property>
+    </bean>
+    
+    <!-- MainPanel textPanel = new MainPanel(); -->
+    <bean id="textPanel" class="com.trade.ui.MainPanel"  init-method="init">
+         <!--  textPanel.setLayout(boxLayout); -->
+        <property name="layout">
+             <ref bean="boxLayout2"/>
+        </property>
+        <property name="panelComponents">
+            <list>
+                <!-- textPanel.add(Box); -->
+                <ref bean="box"/>
+                <ref bean="cleanBuySellPanel"/>
+                <ref bean="boxHor"/>
+                <ref bean="ProfitLossPane"/>
+            </list>
+        </property>
+    </bean>
+    
+    <!-- JTextPane "cleanBuyPane" -->
+    <bean id="cleanBuyPane" class="com.trade.ui.elements.SimpleTextPane" init-method="initBuy">     
+      <!-- cleanBuyPane.setBackground(colorTextField); -->  
+        <property name="background">
+            <ref bean="colorTextField" /> 
+        </property>
+      <!-- cleanBuyPane.setMinimumSize(dimensionTextField); -->
+        <property name="minimumSize">
+            <ref bean="dimensionTextField2" />
+        </property> 
+        <!--  cleanBuyPane.setPreferredSize(dimensionTextField); -->
+        <property name="preferredSize">
+            <ref bean="dimensionTextField2" />
+        </property>
+        <!--  cleanBuyPane.setMaximumSize(dimensionTextField); -->
+        <property name="maximumSize">
+            <ref bean="dimensionTextField2" />
+        </property>  
+    </bean>
+    
+    <!-- JTextPane "cleanSellPane" -->
+    <bean id="cleanSellPane" class="com.trade.ui.elements.SimpleTextPane" init-method="initSell">     
+      <!-- cleanSellPane.setBackground(colorTextField); -->  
+        <property name="background">
+            <ref bean="colorTextField" /> 
+        </property>
+      <!-- cleanSellPane.setMinimumSize(dimensionTextField); -->
+        <property name="minimumSize">
+            <ref bean="dimensionTextField2" />
+        </property> 
+        <!--  cleanSellPane.setPreferredSize(dimensionTextField); -->
+        <property name="preferredSize">
+            <ref bean="dimensionTextField2" />
+        </property>
+        <!--  cleanSellPane.setMaximumSize(dimensionTextField); -->
+        <property name="maximumSize">
+            <ref bean="dimensionTextField2" />
+        </property>  
+    </bean>
+    
+    <!-- TEXTFIELD "ProfitLossPane" -->
+    <bean id="ProfitLossPane" class="com.trade.ui.elements.SimpleTextPane" init-method="initProfitLoss">    
+        <!--
+        <property name="docListener">
+            <ref bean="profitLossListener" />
+        </property> 
+        -->
+        
+      <!-- cleanBuy.setBackground(colorTextField); -->  
+        <property name="background">
+            <ref bean="colorTextField" /> 
+        </property>
+      <!-- cleanBuy.setMinimumSize(dimensionTextField); -->
+        <property name="minimumSize">
+            <ref bean="dimensionTextField" />
+        </property> 
+        <!--  cleanBuy.setPreferredSize(dimensionTextField); -->
+        <property name="preferredSize">
+            <ref bean="dimensionTextField" />
+        </property>
+        <!--  cleanBuy.setMaximumSize(dimensionTextField); -->
+        <property name="maximumSize">
+            <ref bean="dimensionTextField" />
+        </property>  
+    </bean>
+    
+    <!-- File waterMark = new File("./src/main/resources/img/M.png") -->
+    <bean id="waterMark" class="java.io.File" >
+        <constructor-arg type="java.lang.String" name="pathname" value="./src/main/resources/img/M.png" />
+    </bean>
+    
+    <!-- Color.white -->
+    <util:constant id="colorTextField" static-field="java.awt.Color.white" /> 
+    
+    <bean id="dimensionTextField" class="java.awt.Dimension">
+        <constructor-arg index="0" value="240"/>
+        <constructor-arg index="1" value="50"/>
+    </bean>
+    
+    <bean id="dimensionTextField2" class="java.awt.Dimension">
+        <constructor-arg index="0" value="120"/>
+        <constructor-arg index="1" value="50"/>
+    </bean>
+    
+    <!-- Box box = Box.createRigidArea(dimensionTop); -->
+    <bean id="box" class="javax.swing.Box" factory-method="createRigidArea">
+        <constructor-arg ref="dimensionTop" />
+    </bean>
+    
+    <!-- Dimension dimensionTop = new Dimension(0, 10); -->
+    <bean id="dimensionTop" class="java.awt.Dimension">
+        <constructor-arg index="0" value="0"/>
+        <constructor-arg index="1" value="10"/>
+    </bean>
+    
+    <!-- Box boxHor = Box.createRigidArea(dimensionTop); -->
+    <bean id="boxHor" class="javax.swing.Box" factory-method="createRigidArea">
+        <constructor-arg ref="dimensionHor" />
+    </bean>
+    
+    <!-- Dimension dimensionHor = new Dimension(0, 10); -->
+    <bean id="dimensionHor" class="java.awt.Dimension">
+        <constructor-arg index="0" value="0"/>
+        <constructor-arg index="1" value="5"/>
+    </bean>
+    
+    
+    <!--  DocumentListener profitLossListener = new DocumentListener(); -->
+    <bean id="profitLossListener"  class="com.trade.ui.elements.actions.ProfitLoss" >
+        <constructor-arg index="0" ref="cleanBuyPane"></constructor-arg>
+        <constructor-arg index="1" ref="cleanSellPane"></constructor-arg>
+        <constructor-arg index="2" ref="ProfitLossPane"></constructor-arg>
+        
+     <!--   <property name="buyPane" >
+             <ref bean="cleanBuyPane" />
+        </property>
+        <property name="sellPane" >
+             <ref bean="cleanSellPane" />
+        </property>
+        <property name="profitLossPane" >
+             <ref bean="ProfitLossPane" /> 
+        </property> -->
+    </bean>
+    
+</beans>

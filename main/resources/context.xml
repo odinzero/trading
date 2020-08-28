@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                           http://www.springframework.org/schema/util  http://www.springframework.org/schema/util/spring-util-3.1.xsd">
+
+    <bean id="mainFrame" class="com.trade.ui.frame" init-method="init">
+        <!-- mainFrame.setJMenuBar(menuBar); -->
+        <property name="mBar">
+            <ref bean="menu_bar"/>
+        </property>
+        <property name="contentPane">
+            <ref bean="mainPanel"/>
+        </property>
+        <property name="title">
+            <value>Calculator</value>
+        </property>
+    </bean>
+    
+    <bean id="mainPanel" class="com.trade.ui.MainPanel"  init-method="init">
+         <!--  pMain.setLayout(boxLayout); -->
+        <property name="layout">
+             <ref bean="boxLayout1"/>
+        </property>
+        <property name="panelComponents">
+            <list>
+                <ref bean="textPanel"/>
+                <ref bean="buy_sell_panel"/>
+               <!-- <ref bean="pLow"/> -->
+            </list>
+        </property>
+    </bean>
+    
+    <!-- BoxLayout.Y_AXIS -->
+    <util:constant id="y_direction1" static-field="javax.swing.BoxLayout.Y_AXIS" />
+    
+    <!-- BoxLayout boxLayout = new BoxLayout(pMain, y_direction) -->
+    <bean id="boxLayout1" class="javax.swing.BoxLayout">
+        <constructor-arg index="0" ref="mainPanel"/>
+        <constructor-arg index="1" ref="y_direction1" />
+    </bean>
+    
+    <!-- ======================== History ================================== -->
+    
+   <!-- <bean id="_history_"  class="com.calc.parser.History" init-method="init"> </bean> -->
+   
+   <import resource="trade_calculation.xml"></import>
+   <import resource="panel_text.xml"></import>
+   <import resource="menu.xml"></import>
+   <!-- <import resource="panel_buttons2.xml"></import>  -->
+    
+    
+</beans>

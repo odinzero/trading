@@ -1,0 +1,74 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                           http://www.springframework.org/schema/util  http://www.springframework.org/schema/util/spring-util-3.1.xsd">  
+ 
+    
+    <!--  ======================= caretListeners for BUY ====================== -->
+    
+    <!--  caretMoveLimitation caretListener_buy_quantity = new caretMoveLimitation(); -->
+    <bean id="caretListener_buy_quantity"  class="com.trade.ui.elements.actions.caretMoveLimitation" init-method="init">
+        <property name="tfield" >
+            <ref bean="I_get_fieldBuy" />
+        </property>
+        <property name="limit" >
+            <value>15</value>
+        </property>
+    </bean>
+    
+    <!--  caretMoveLimitation caretListener_buy_price = new caretMoveLimitation(); -->
+    <bean id="caretListener_buy_price"  class="com.trade.ui.elements.actions.caretMoveLimitation" init-method="init">
+        <property name="tfield" >
+            <ref bean="price_fieldBuy" />
+        </property>
+        <property name="limit" >
+            <value>15</value>
+        </property>
+    </bean>
+    
+    <!--  caretMoveLimitation caretListener_buy_total = new caretMoveLimitation(); -->
+    <bean id="caretListener_buy_total"  class="com.trade.ui.elements.actions.caretMoveLimitation" init-method="init">
+        <property name="tfield" >
+            <ref bean="I_give_fieldBuy" />
+        </property>
+        <property name="limit" >
+            <value>15</value>
+        </property>
+    </bean>
+    
+    
+    <!--  ======================= caretListeners for SELL ====================== -->
+    
+    <!--  caretMoveLimitation caretListener_sell_quantity = new caretMoveLimitation(); -->
+    <bean id="caretListener_sell_quantity"  class="com.trade.ui.elements.actions.caretMoveLimitation" init-method="init">
+        <property name="tfield" >
+            <ref bean="I_give_fieldSell" />
+        </property>
+        <property name="limit" >
+            <value>15</value>
+        </property>
+    </bean>
+    
+    <!--  caretMoveLimitation caretListener_sell_price = new caretMoveLimitation(); -->
+    <bean id="caretListener_sell_price"  class="com.trade.ui.elements.actions.caretMoveLimitation" init-method="init">
+        <property name="tfield" >
+            <ref bean="price_fieldSell" />
+        </property>
+        <property name="limit" >
+            <value>15</value>
+        </property>
+    </bean>
+    
+    <!--  caretMoveLimitation caretListener_sell_total = new caretMoveLimitation(); -->
+    <bean id="caretListener_sell_total"  class="com.trade.ui.elements.actions.caretMoveLimitation" init-method="init">
+        <property name="tfield" >
+            <ref bean="I_get_fieldSell" />
+        </property>
+        <property name="limit" >
+            <value>15</value>
+        </property>
+    </bean>
+    
+    
+</beans>
