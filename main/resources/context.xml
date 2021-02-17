@@ -45,10 +45,11 @@
     
    <!-- <bean id="_history_"  class="com.calc.parser.History" init-method="init"> </bean> -->
    
+   <import resource="panels.xml"></import> 
+   
    <import resource="trade_calculation.xml"></import>
    <import resource="panel_text.xml"></import>
    <import resource="menu.xml"></import>
    <!-- <import resource="panel_buttons2.xml"></import>  -->
-    
     
 </beans>

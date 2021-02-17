@@ -12,16 +12,18 @@
         menu_bar.add(help);
     -->
  
-    <import resource="menu_view.xml"></import>
-    <import resource="menu_edit.xml"></import>
+    <import resource="menu_trade.xml"></import>
+    <import resource="menu_order.xml"></import>
     <import resource="menu_help.xml"></import>
+    
+    <import resource="menuItemActions.xml"></import>
     
     <!-- JMenuBar menu_bar = new JMenuBar(); -->
     <bean id="menu_bar" class="com.trade.ui.elements.menuBar" init-method="init">
         <property name="menuBarComponents" >
             <list>
-                <ref bean="view"/>
-                <ref bean="edit"/>
+                <ref bean="trade"/>
+                <ref bean="order"/>
                 <ref bean="help"/>
             </list>
         </property>

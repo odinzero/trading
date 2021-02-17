@@ -1,6 +1,8 @@
 
 package com.my.launcher;
 
+import javax.swing.JLabel;
+
 
 public class Main {
     

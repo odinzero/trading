@@ -1,17 +1,20 @@
 
 package com.trade.ui.elements;
 
+import com.trade.ui.MainPanel;
 import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Iterator;
 import java.util.List;
 import javax.swing.Action;
 import javax.swing.Icon;
 import javax.swing.JMenuItem;
 
-public class menu_item  extends JMenuItem{
+public class menu_item  extends JMenuItem  {
     
     menu_item() {
-        super();
+        super(); 
     }
     
     menu_item(Action a) {
@@ -19,11 +22,11 @@ public class menu_item  extends JMenuItem{
     }
     
     menu_item(String text) {
-        super(text);
+        super(text); 
     }
     
     menu_item(Icon icon) {
-        super(icon);
+        super(icon); 
     }
     
     menu_item(String text, Icon icon){
@@ -31,7 +34,7 @@ public class menu_item  extends JMenuItem{
     }
     
     menu_item(String text, int mnemonic) {
-        super(text, mnemonic);
+        super(text, mnemonic); 
     }
     
      private List menuItemElements;
@@ -51,4 +54,6 @@ public class menu_item  extends JMenuItem{
             add(component);
         }
     }
+    
+    
 }

@@ -6,27 +6,27 @@
  
     
     <bean id="waterMark_btc" class="java.io.File" >
-        <constructor-arg type="java.lang.String" name="pathname" value="./src/main/resources/img/bitcoin.png" />
+        <constructor-arg type="java.lang.String" name="pathname" value="/img/bitcoin.png" />
     </bean>
     
     <bean id="waterMark_dash" class="java.io.File" >
-        <constructor-arg type="java.lang.String" name="pathname" value="./src/main/resources/img/dash.png" />
+        <constructor-arg type="java.lang.String" name="pathname" value="/img/dash.png" />
     </bean>
     
     <bean id="waterMark_ethereum" class="java.io.File" >
-        <constructor-arg type="java.lang.String" name="pathname" value="./src/main/resources/img/ethereum.png" />
+        <constructor-arg type="java.lang.String" name="pathname" value="/img/ethereum.png" />
     </bean>
     
     <bean id="waterMark_tether" class="java.io.File" >
-        <constructor-arg type="java.lang.String" name="pathname" value="./src/main/resources/img/tether.png" />
+        <constructor-arg type="java.lang.String" name="pathname" value="/img/tether.png" />
     </bean>
     
     <bean id="waterMark_xrp" class="java.io.File" >
-        <constructor-arg type="java.lang.String" name="pathname" value="./src/main/resources/img/xrp.png" />
+        <constructor-arg type="java.lang.String" name="pathname" value="/img/xrp.png" />
     </bean>
     
     <bean id="waterMark_usd" class="java.io.File" >
-        <constructor-arg type="java.lang.String" name="pathname" value="./src/main/resources/img/USD.png" />
+        <constructor-arg type="java.lang.String" name="pathname" value="/img/USD.png" />
     </bean>
     
 </beans>

@@ -7,24 +7,27 @@
 
 <!--
         JMenu edit = new JMenu("Edit");
-        JMenuItem copy = new JMenuItem("Copy      Ctrl+C");
-        JMenuItem paste = new JMenuItem("Paste      Ctrl+V");
+        JMenuItem long = new JMenuItem("Long      Ctrl+C");
+        JMenuItem short = new JMenuItem("Paste      Ctrl+V");
+        JMenuItem all = new JMenuItem("All      Ctrl+A");
         
         JMenu history_submenu = new JMenu("History      ->");
-        JMenuItem copy_history = new JMenuItem("Copy     ");
+        JMenuItem long_history = new JMenuItem("Copy     ");
         JMenuItem edit_history = new JMenuItem("Edit      F2");
         JMenuItem cancel_edit = new JMenuItem("Cancel edit      Esc");
         JMenuItem clear = new JMenuItem("Clear      Ctrl+Shift+D");
-        history_submenu.add(copy_history);
+        history_submenu.add(long_history);
         history_submenu.add(edit_history);
         history_submenu.add(cancel_edit);
         history_submenu.add(clear);
         
-        copy.add(new JSeparator(SwingConstants.VERTICAL));
-        paste.add(new JSeparator(SwingConstants.VERTICAL));
+        long.add(new JSeparator(SwingConstants.VERTICAL));
+        short.add(new JSeparator(SwingConstants.VERTICAL));
+        all.add(new JSeparator(SwingConstants.VERTICAL));
         
-        edit.add(copy);
-        edit.add(paste);
+        edit.add(long);
+        edit.add(short);
+        edit.add(all);
         edit.add(new JSeparator());
         edit.add(history_submenu);
     -->   
@@ -40,34 +43,45 @@
         <constructor-arg  ref="const_v2" />
     </bean>
     
-    <!-- JMenuItem copy = new JMenuItem("Copy      Ctrl+C"); --> 
-    <bean id="copy" class="com.trade.ui.elements.menu_item" init-method="init">
-        <constructor-arg  type="java.lang.String" name="text" value="Copy      Ctrl+C"  />
+    <!-- JMenuItem long = new JMenuItem("Long      Ctrl+C"); --> 
+    <bean id="long" class="com.trade.ui.elements.menu_item" init-method="init">
+        <constructor-arg  type="java.lang.String" name="text" value="Long      Ctrl+l"  />
         <property name="menuItemElements" >
             <list>
-                <!-- copy.add(separ2); -->
+                <!-- long.add(separ2); -->
                 <ref bean="separ2"/>
             </list>
         </property>
     </bean>
     
-    <!-- JMenuItem paste = new JMenuItem("Paste      Ctrl+V"); -->
-    <bean id="paste" class="com.trade.ui.elements.menu_item" init-method="init">
-        <constructor-arg  type="java.lang.String" name="text" value="Paste      Ctrl+V"  />
+    <!-- JMenuItem short = new JMenuItem("Short      Ctrl+V"); -->
+    <bean id="short" class="com.trade.ui.elements.menu_item" init-method="init">
+        <constructor-arg  type="java.lang.String" name="text" value="Short      Ctrl+V"  />
         <property name="menuItemElements" >
             <list>
-                <!-- paste.add(separ2); -->
+                <!-- short.add(separ2); -->
                 <ref bean="separ2"/>
             </list>
         </property>
     </bean>
     
-    <!-- JMenuItem copy_history = new JMenuItem("Copy     "); -->
-    <bean id="copy_history" class="com.trade.ui.elements.menu_item" init-method="init">
+    <!-- JMenuItem all = new JMenuItem("All      Ctrl+A"); -->
+    <bean id="all_orders" class="com.trade.ui.elements.menu_item" init-method="init">
+        <constructor-arg  type="java.lang.String" name="text" value="All      Ctrl+A"  />
+        <property name="menuItemElements" >
+            <list>
+                <!-- short.add(separ2); -->
+                <ref bean="separ2"/>
+            </list>
+        </property>
+    </bean>
+    
+    <!-- JMenuItem long_history = new JMenuItem("Copy     "); -->
+    <bean id="long_history" class="com.trade.ui.elements.menu_item" init-method="init">
         <constructor-arg  type="java.lang.String" name="text" value="Copy     "  />
         <property name="menuItemElements" >
             <list>
-                <!-- copy_history.add(separ2); -->
+                <!-- long_history.add(separ2); -->
                 <ref bean="separ2"/>
             </list>
         </property>
@@ -111,7 +125,7 @@
         <constructor-arg index="0" type="java.lang.String" value="History      ->"  />
         <property name="menuElements" >
             <list>
-                <ref bean="copy_history"/>
+                <ref bean="long_history"/>
                 <ref bean="edit_history"/>
                 <ref bean="cancel_edit"/>
                 <ref bean="clear"/>
@@ -119,13 +133,14 @@
         </property>
     </bean>
  
-    <!-- JMenu edit = new JMenu("Edit"); -->
-    <bean id="edit" class="com.trade.ui.elements.menu" init-method="init">
-        <constructor-arg index="0" type="java.lang.String" value="Edit"  />
+    <!-- JMenu order = new JMenu("Order"); -->
+    <bean id="order" class="com.trade.ui.elements.menu" init-method="init">
+        <constructor-arg index="0" type="java.lang.String" value="Order"  />
         <property name="menuElements" >
             <list>
-                <ref bean="copy"/>
-                <ref bean="paste"/>
+                <ref bean="long"/>
+                <ref bean="short"/>
+                <ref bean="all_orders"/>
                 <ref bean="separator_horizontal2"/>
                 <ref bean="history_submenu"/>
             </list>

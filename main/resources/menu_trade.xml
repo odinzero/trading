@@ -224,11 +224,11 @@
     <!-- JSeparator separator_horizontal = new JSeparator() -->
     <bean id="separator_horizontal" class="javax.swing.JSeparator" scope="prototype" />      
     
-    <!-- JMenu view = new JMenu("View"); -->
-    <bean id="view" class="com.trade.ui.elements.menu" init-method="init">
-      <!--  <constructor-arg index="0" type="java.lang.String" value="View"  /> -->
+    <!-- JMenu view = new JMenu("Trade"); -->
+    <bean id="trade" class="com.trade.ui.elements.menu" init-method="init">
+      <!--  <constructor-arg index="0" type="java.lang.String" value="Trade"  /> -->
         <property name="text" >
-            <value>View</value>
+            <value>Trade</value>
         </property>
         <property name="menuElements" >
             <list>

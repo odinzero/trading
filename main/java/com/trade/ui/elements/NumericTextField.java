@@ -278,6 +278,7 @@ public class NumericTextField extends JTextField implements
         f.setVisible(true);
     }
 
+    
 }
 
 class NumericPlainDocument extends PlainDocument {

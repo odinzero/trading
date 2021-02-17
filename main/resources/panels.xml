@@ -1,0 +1,74 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                           http://www.springframework.org/schema/util  http://www.springframework.org/schema/util/spring-util-3.1.xsd">  
+ 
+    
+    
+    <!--  ======================= Long Panel  ====================== -->
+    
+    <!--  MainPanel longPanel = new MainPanel(); -->
+    <bean id="longPanel" class="com.trade.ui.MainPanel"  init-method="init">
+         <!--  pMain.setLayout(boxLayout); -->
+        <property name="layout">
+             <ref bean="boxLayout_long"/>
+        </property>
+        <property name="panelComponents">
+            <list>
+                <ref bean="lab_1"/>
+               <!-- <ref bean="textPanel"/> -->
+               <!--  <ref bean="buy_sell_panel"/> -->
+               <!-- <ref bean="pLow"/> -->
+            </list>
+        </property>
+    </bean>
+    
+     <!-- BoxLayout.Y_AXIS -->
+    <util:constant id="y_direction_long" static-field="javax.swing.BoxLayout.Y_AXIS" />
+    
+    <!-- BoxLayout boxLayout = new BoxLayout(pMain, y_direction) -->
+    <bean id="boxLayout_long" class="javax.swing.BoxLayout">
+        <constructor-arg index="0" ref="longPanel"/>
+        <constructor-arg index="1" ref="y_direction_long" />
+    </bean>
+    
+    <!--  ======================= Short Panel  ====================== -->
+    
+    <!--  MainPanel shortPanel = new MainPanel(); -->
+    <bean id="shortPanel" class="com.trade.ui.MainPanel"  init-method="init">
+         <!--  pMain.setLayout(boxLayout); -->
+        <property name="layout">
+             <ref bean="boxLayout_short"/>
+        </property>
+        <property name="panelComponents">
+            <list>
+                <ref bean="lab_2"/>
+               <!-- <ref bean="textPanel"/> -->
+               <!--  <ref bean="buy_sell_panel"/> -->
+               <!-- <ref bean="pLow"/> -->
+            </list>
+        </property>
+    </bean>
+    
+    <!-- BoxLayout.Y_AXIS -->
+    <util:constant id="y_direction_short" static-field="javax.swing.BoxLayout.Y_AXIS" />
+    
+    <!-- BoxLayout boxLayout = new BoxLayout(pMain, y_direction) -->
+    <bean id="boxLayout_short" class="javax.swing.BoxLayout">
+        <constructor-arg index="0" ref="shortPanel"/>
+        <constructor-arg index="1" ref="y_direction_short" />
+    </bean>
+    
+    
+    <!-- JLabel lab_1 = new JLabel("Long !"); -->
+    <bean id="lab_1" class="javax.swing.JLabel">
+        <constructor-arg index="0" type="String" value="Long"/> 
+    </bean>
+    
+    <!-- JLabel lab_2 = new JLabel("Long !"); -->
+    <bean id="lab_2" class="javax.swing.JLabel">
+        <constructor-arg index="0" type="String" value="Short"/> 
+    </bean>
+    
+</beans>

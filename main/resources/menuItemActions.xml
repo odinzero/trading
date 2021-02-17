@@ -1,0 +1,71 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                           http://www.springframework.org/schema/util  http://www.springframework.org/schema/util/spring-util-3.1.xsd">  
+ 
+     <!--  ======================= All Panels  ====================== -->
+    
+    <!--  AllPanels allPanels = new AllPanels(); -->
+    <bean id="all_panels" class="com.trade.ui.elements.actions.AllPanels" >
+        <property name="frame">
+             <ref bean="mainFrame"/>
+        </property>
+        <property name="panels">
+            <list>
+                <ref bean="mainPanel"/>
+                <ref bean="longPanel"/>
+                <ref bean="shortPanel"/>
+            </list>
+        </property>
+    </bean>
+    
+    <!--  ======================= JMenuItem Listeners for menu "ORDER" ====================== -->
+    
+    <!--  MenuItemAction long_order_action = new MenuItemAction(); -->
+    <bean id="long_order_action"  class="com.trade.ui.elements.actions.MenuItemAction" init-method="init">
+        <property name="item" >
+            <ref bean="long" />
+        </property>
+       <!-- <property name="frame">
+             <ref bean="mainFrame"/>
+        </property> -->
+        <property name="allPanels">
+             <ref bean="all_panels"/>
+        </property>
+        <property name="currentPanel">
+             <ref bean="longPanel"/>
+        </property>
+       <!--  <property name="panel1">
+             <ref bean="longPanel"/>
+        </property>
+        <property name="panel" >
+            <ref bean="mainPanel"/>
+        </property> -->
+    </bean>
+    
+    
+    <!--  MenuItemAction short_order_action = new MenuItemAction(); -->
+    <bean id="short_order_action"  class="com.trade.ui.elements.actions.MenuItemAction" init-method="init">
+        <property name="item" >
+            <ref bean="short" />
+        </property>
+        <!-- <property name="frame">
+             <ref bean="mainFrame"/>
+        </property> -->
+        <property name="allPanels">
+             <ref bean="all_panels"/>
+        </property>
+        <property name="currentPanel">
+             <ref bean="shortPanel"/>
+        </property>
+        <!-- <property name="panel1">
+             <ref bean="shortPanel"/>
+        </property>
+        <property name="panel" >
+            <ref bean="mainPanel"/>
+        </property> -->
+    </bean>
+    
+    
+</beans>
