@@ -20,28 +20,36 @@
         </property>
     </bean>
     
-    <!--  ======================= JMenuItem Listeners for menu "ORDER" ====================== -->
+    
+    <!--  ======================= JMenuItem listeners for menu "TRADE" ====================== -->
+    
+    <!--  MenuItemAction calculator_action = new MenuItemAction(); -->
+    <bean id="calculator_action"  class="com.trade.ui.elements.actions.MenuItemAction" init-method="init">
+        <property name="item" >
+            <ref bean="calculator" />
+        </property>
+        <property name="allPanels">
+             <ref bean="all_panels"/>
+        </property>
+        <property name="currentPanel">
+             <ref bean="mainPanel"/>
+        </property>
+    </bean>
+    
+    
+    <!--  ======================= JMenuItem listeners for menu "ORDER" ====================== -->
     
     <!--  MenuItemAction long_order_action = new MenuItemAction(); -->
     <bean id="long_order_action"  class="com.trade.ui.elements.actions.MenuItemAction" init-method="init">
         <property name="item" >
             <ref bean="long" />
         </property>
-       <!-- <property name="frame">
-             <ref bean="mainFrame"/>
-        </property> -->
         <property name="allPanels">
              <ref bean="all_panels"/>
         </property>
         <property name="currentPanel">
              <ref bean="longPanel"/>
         </property>
-       <!--  <property name="panel1">
-             <ref bean="longPanel"/>
-        </property>
-        <property name="panel" >
-            <ref bean="mainPanel"/>
-        </property> -->
     </bean>
     
     
@@ -50,21 +58,12 @@
         <property name="item" >
             <ref bean="short" />
         </property>
-        <!-- <property name="frame">
-             <ref bean="mainFrame"/>
-        </property> -->
         <property name="allPanels">
              <ref bean="all_panels"/>
         </property>
         <property name="currentPanel">
              <ref bean="shortPanel"/>
         </property>
-        <!-- <property name="panel1">
-             <ref bean="shortPanel"/>
-        </property>
-        <property name="panel" >
-            <ref bean="mainPanel"/>
-        </property> -->
     </bean>
     
     

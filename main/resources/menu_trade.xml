@@ -9,7 +9,7 @@
 
         JMenu view = new JMenu("View");
 
-        JMenuItem standard   = new JMenuItem("Standard             Alt+1");
+        JMenuItem calculator   = new JMenuItem("Calculator             Alt+1");
         JMenuItem scientific = new JMenuItem("Sientific             Alt+2");
         JMenuItem programmer = new JMenuItem("Programmer      Alt+3");
         JMenuItem statistics = new JMenuItem("Statistics      Alt+4");
@@ -29,7 +29,7 @@
         worksheets.add(fuel_economy_mpg);
         worksheets.add(fule_economy_l);
 
-        standard.add(new JSeparator(SwingConstants.VERTICAL));
+        calculator.add(new JSeparator(SwingConstants.VERTICAL));
         scientific.add(new JSeparator(SwingConstants.VERTICAL));
         programmer.add(new JSeparator(SwingConstants.VERTICAL));
         statistics.add(new JSeparator(SwingConstants.VERTICAL));
@@ -42,7 +42,7 @@
         date_calculation.add(new JSeparator(SwingConstants.VERTICAL));
         worksheets.add(new JSeparator(SwingConstants.VERTICAL));
 
-        view.add(standard);
+        view.add(calculator);
         view.add(scientific);
         view.add(programmer);
         view.add(statistics);
@@ -65,12 +65,12 @@
         <constructor-arg  ref="const_v1" />
     </bean>
     
-    <!-- menu_item standard   = new menu_item("Standard             Alt+1"); -->
-    <bean id="standard" class="com.trade.ui.elements.menu_item" init-method="init">
-        <constructor-arg  type="java.lang.String" name="text" value="Standard             Alt+1"  />
+    <!-- menu_item calculator   = new menu_item("Calculator             Alt+1"); -->
+    <bean id="calculator" class="com.trade.ui.elements.menu_item" init-method="init">
+        <constructor-arg  type="java.lang.String" name="text" value="Calculator             Ctrl+C"  />
         <property name="menuItemElements" >
             <list>
-                <!-- standard.add(separ1); -->
+                <!-- calculator.add(separ1); -->
                 <ref bean="separ1"/>
             </list>
         </property>
@@ -232,7 +232,7 @@
         </property>
         <property name="menuElements" >
             <list>
-                <ref bean="standard"/>
+                <ref bean="calculator"/>
                 <ref bean="scientific"/>
                 <ref bean="programmer"/>
                 <ref bean="statistics"/>
