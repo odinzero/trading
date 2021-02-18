@@ -5,26 +5,48 @@
                            http://www.springframework.org/schema/util  http://www.springframework.org/schema/util/spring-util-3.1.xsd">  
  
     
-    
     <!--  ======================= Long Panel  ====================== -->
     
-    <!--  MainPanel longPanel = new MainPanel(); -->
-    <bean id="longPanel" class="com.trade.ui.MainPanel"  init-method="init">
-         <!--  pMain.setLayout(boxLayout); -->
-        <property name="layout">
-             <ref bean="boxLayout_long"/>
+    <!-- JLabel lab_1 = new JLabel("sell more expensive !"); -->
+    <bean id="lab_long" class="javax.swing.JLabel">
+        <constructor-arg index="0" type="String" value="Sell more expensive"/> 
+        <property name="horizontalAlignment">
+            <ref bean="shortLabel_center" />
+        </property>
+        <property name="foreground">
+            <ref bean="color_buy" />
+        </property>
+    </bean>
+    
+     <bean id="longTablePanel" class="com.trade.ui.MainPanel"  init-method="init">
+        <!--  pMain.setLayout(boxLayout); -->
+         <property name="layout">
+            <ref bean="boxLayout_long_2"/>
         </property>
         <property name="panelComponents">
             <list>
-                <ref bean="lab_1"/>
-               <!-- <ref bean="textPanel"/> -->
-               <!--  <ref bean="buy_sell_panel"/> -->
-               <!-- <ref bean="pLow"/> -->
+                <ref bean="long_table"/> 
             </list>
         </property>
     </bean>
     
-     <!-- BoxLayout.Y_AXIS -->
+    <!--  MainPanel longPanel = new MainPanel(); -->
+    <bean id="longPanel" class="com.trade.ui.MainPanel"  init-method="init">
+        <!--  pMain.setLayout(boxLayout); -->
+        <property name="layout">
+            <ref bean="boxLayout_long"/>
+        </property> 
+        <property name="panelComponents">
+            <list>
+                <ref bean="lab_long"/> 
+                <ref bean="longTablePanel"/> 
+                <!--  <ref bean="buy_sell_panel"/> -->
+                <!-- <ref bean="pLow"/> -->
+            </list>
+        </property>
+    </bean>
+    
+    <!-- BoxLayout.Y_AXIS -->
     <util:constant id="y_direction_long" static-field="javax.swing.BoxLayout.Y_AXIS" />
     
     <!-- BoxLayout boxLayout = new BoxLayout(pMain, y_direction) -->
@@ -33,20 +55,44 @@
         <constructor-arg index="1" ref="y_direction_long" />
     </bean>
     
+    <!-- BoxLayout boxLayout = new BoxLayout(pMain, y_direction) -->
+    <bean id="boxLayout_long_2" class="javax.swing.BoxLayout">
+        <constructor-arg index="0" ref="longTablePanel"/>
+        <constructor-arg index="1" ref="y_direction_long" />
+    </bean>
+    
+    <!--  Table long_order_action = new Table(); -->
+    <bean id="long_table"  class="com.trade.ui.elements.table.Table" init-method="init">
+        <property name="parentPanel" >
+            <ref bean="longTablePanel" />
+        </property>
+    </bean>
+    
+    <!-- Color color_buy = new Color(34,177,76); -->
+    <bean id="color_buy" class="java.awt.Color" >
+        <constructor-arg index="0" type="int" value="34"/>
+        <constructor-arg index="1" type="int" value="177"/>
+        <constructor-arg index="2" type="int" value="76"/>
+    </bean> 
+    
+    
+    
+    
+    
     <!--  ======================= Short Panel  ====================== -->
     
     <!--  MainPanel shortPanel = new MainPanel(); -->
     <bean id="shortPanel" class="com.trade.ui.MainPanel"  init-method="init">
-         <!--  pMain.setLayout(boxLayout); -->
+        <!--  pMain.setLayout(boxLayout); -->
         <property name="layout">
-             <ref bean="boxLayout_short"/>
+            <ref bean="boxLayout_short"/>
         </property>
         <property name="panelComponents">
             <list>
-                <ref bean="lab_2"/>
-               <!-- <ref bean="textPanel"/> -->
-               <!--  <ref bean="buy_sell_panel"/> -->
-               <!-- <ref bean="pLow"/> -->
+                <ref bean="lab_short"/>
+                <!-- <ref bean="textPanel"/> -->
+                <!--  <ref bean="buy_sell_panel"/> -->
+                <!-- <ref bean="pLow"/> -->
             </list>
         </property>
     </bean>
@@ -60,15 +106,11 @@
         <constructor-arg index="1" ref="y_direction_short" />
     </bean>
     
-    
-    <!-- JLabel lab_1 = new JLabel("Long !"); -->
-    <bean id="lab_1" class="javax.swing.JLabel">
-        <constructor-arg index="0" type="String" value="Long"/> 
-    </bean>
-    
     <!-- JLabel lab_2 = new JLabel("Long !"); -->
-    <bean id="lab_2" class="javax.swing.JLabel">
-        <constructor-arg index="0" type="String" value="Short"/> 
+    <bean id="lab_short" class="javax.swing.JLabel">
+        <constructor-arg index="0" type="String" value="Buy cheaper"/> 
     </bean>
+    
+    <util:constant id="shortLabel_center" static-field="javax.swing.SwingConstants.CENTER" /> 
     
 </beans>
